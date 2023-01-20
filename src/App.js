@@ -33,7 +33,7 @@ function App() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <img src={Cmtt} alt="imagem-logo"/>
       <label>
-        Nome Completo:
+        Nome :
       <input type="text" {...register("name", { required: true })}/>
        <span>{errors.name?.message}</span>
       </label>
