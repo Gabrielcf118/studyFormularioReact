@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Cmtt from "./img/cmtt.png";
-import Cmtt2 from "./img/avenida.jpg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
