@@ -12,13 +12,13 @@ import { Container } from "@mui/system";
 export const Header = () => {
   return (
     <>
-      <Box sx={{ m: -1, mt: -1, flexGrow: 1 }} margin="auto">
+      <Box sx={{ m: -1, mt: 3, flexGrow: 1 }} margin="auto">
         <img src="/img/banner-full-anapolis.jpg" Width="100%" height="100%" />
       </Box>
-      <Box sx={{ mt: -25 }} m={5}>
+      <Box sx={{ mt: -20 }} m={1}>
         <img src="/img/cmtt.png" width="400px" sx={{ flexGrow: 1, mx: 100 }} />
       </Box>
-      <Box sx={{ ml: 105, mt: 10 }}>
+      <Box sx={{ ml: 105, mt: 5 }}>
         <Link
           href="https://www.anapolis.go.gov.br/fale-conosco/"
           underline="hover"
@@ -56,9 +56,9 @@ export const Header = () => {
         >
           Governo e Secretarias
         </Link>
-        <Box sx={{ flexGrow: 1, mt: -1, ml: -143, mr: -1 }}>
+        <Box sx={{ flexGrow: 1, mt: -36.5, ml: -143, mr: -1 }}>
           <AppBar
-            position="static"
+            position="sticky"
             sx={{ backgroundColor: blue[800] }}
             maxWidth="x1"
           >

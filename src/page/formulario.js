@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import Typography from "@mui/material/Typography";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome é obrigatorio."),
@@ -90,8 +91,11 @@ export const Formulario = () => {
           Validate
           textAlign="-webkit-center"
           padding="30px"
-          sx={{ mt: 6 }}
+          sx={{ mt: 10 }}
         >
+          <Typography component="h1" variant="h5" sx={{ padding: 3, mt: -10 }}>
+            Cadastro
+          </Typography>
           <TextField
             value={nome}
             error={errorNome}
