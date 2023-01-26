@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,19 +7,18 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { blue } from "@mui/material/colors";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Avatar from "@mui/material/Avatar";
+import { Container } from "@mui/system";
 
 export const Header = () => {
   return (
     <>
-      <Box m={-1} sx={{ mt: -8 }}>
+      <Box sx={{ m: -1, mt: -1, flexGrow: 1 }} margin="auto">
         <img src="/img/banner-full-anapolis.jpg" Width="100%" height="100%" />
       </Box>
-      <Box sx={{ mt: -17 }} m={5}>
-        <img src="/img/cmtt.png" width="400px" sx={{ mx: 100 }} />
+      <Box sx={{ mt: -25 }} m={5}>
+        <img src="/img/cmtt.png" width="400px" sx={{ flexGrow: 1, mx: 100 }} />
       </Box>
-      <Box sx={{ ml: 105, mt: -3.5 }}>
+      <Box sx={{ ml: 105, mt: 10 }}>
         <Link
           href="https://www.anapolis.go.gov.br/fale-conosco/"
           underline="hover"
@@ -29,7 +28,7 @@ export const Header = () => {
           {"Fale Conosco"}
         </Link>
       </Box>
-      <Box sx={{ ml: 120, mt: -2.3 }}>
+      <Box sx={{ ml: 120, mt: -2.5 }}>
         <Link
           href="https://www.anapolis.go.gov.br/ouvidoria-e-atendimento/"
           underline="hover"
@@ -39,7 +38,7 @@ export const Header = () => {
           Política de Privacidade
         </Link>
       </Box>
-      <Box sx={{ ml: 141, mt: -2.4 }}>
+      <Box sx={{ ml: 141, mt: -2.5 }}>
         <Link
           href="https://acessoainformacao.anapolis.go.gov.br/cidadao/ouvidoria/denuncia?_ga=2.258066506.1745136886.1674497303-1855585990.1673278129"
           underline="hover"
@@ -48,8 +47,21 @@ export const Header = () => {
         >
           Ouvidoria Geral
         </Link>
-        <Box sx={{ flexGrow: 1, ml: -143, mt: -1, mr: -1 }}>
-          <AppBar position="static" sx={{ backgroundColor: blue[800] }}>
+        <Link
+          href="https://www.anapolis.go.gov.br/estrutura-organizacional/?pg=1://acessoainformacao.anapolis.go.gov.br/cidadao/ouvidoria/denuncia?_ga=2.258066506.1745136886.1674497303-1855585990.1673278129"
+          underline="hover"
+          variant="body2"
+          color="#ffff"
+          sx={{ ml: 3 }}
+        >
+          Governo e Secretarias
+        </Link>
+        <Box sx={{ flexGrow: 1, mt: -1, ml: -143, mr: -1 }}>
+          <AppBar
+            position="static"
+            sx={{ backgroundColor: blue[800] }}
+            maxWidth="x1"
+          >
             <Toolbar>
               <IconButton
                 size="large"
@@ -68,11 +80,7 @@ export const Header = () => {
               </Button>
             </Toolbar>
           </AppBar>
-          <Avatar sx={{ m: 1, mt: -6.3, ml: 78.2, backgroundColor: blue[800] }}>
-            <AssignmentTurnedInIcon />
-          </Avatar>
         </Box>
-        ;
       </Box>
     </>
   );

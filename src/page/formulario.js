@@ -10,13 +10,16 @@ import InputLabel from "@mui/material/InputLabel";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome é obrigatorio."),
-  telefone: yup.string().required(""),
+  telefone: yup.number().required(""),
   email: yup
     .string()
     .email("Digite um email válido")
     .required("O email é obrigatório."),
   genero: yup.string().required(),
   endereco: yup.string().required(),
+  cpf: yup.number().required(),
+  data: yup.string().required(),
+  cidade: yup.string().required(),
 });
 
 export const Formulario = () => {
@@ -32,10 +35,15 @@ export const Formulario = () => {
   const [errorData, setErrorData] = React.useState("");
   const [endereco, setEndereco] = React.useState("");
   const [errorEndereco, setErrorEndereco] = React.useState("");
+  const [cpf, setCpf] = React.useState("");
+  const [errorCpf, setErrorCpf] = React.useState("");
+  const [cidade, setCidade] = React.useState("");
+  const [errorCidade, setErrorCidade] = React.useState("");
+
   const onSubmit = () => {
     schema
       .validate(
-        { nome, telefone, email, genero, data, endereco },
+        { nome, telefone, cpf, genero, email, data, endereco, cidade },
         { abortEarly: false }
       )
       .then((dadosValidados) => {
@@ -63,6 +71,12 @@ export const Formulario = () => {
           } else if (error.path === "endereco") {
             error.message = "Este campo é obrigatório";
             setErrorEndereco(error.message);
+          } else if (error.path === "cpf") {
+            error.message = "Este campo é obrigatório";
+            setErrorCpf(error.message);
+          } else if (error.path === "cidade") {
+            error.message = "Este campo é obrigatório";
+            setErrorCidade(error.message);
           }
         });
       });
@@ -75,13 +89,14 @@ export const Formulario = () => {
           component="form"
           Validate
           textAlign="-webkit-center"
-          padding="30PX"
+          padding="30px"
+          sx={{ mt: 6 }}
         >
           <TextField
             value={nome}
             error={errorNome}
             required
-            sx={{ width: 250 }}
+            sx={{ width: 190, ml: -0 }}
             id="name"
             label="Nome Completo"
             autoComplete="name"
@@ -95,7 +110,7 @@ export const Formulario = () => {
             error={errorTelefone}
             margin="normal"
             required
-            sx={{ width: 250 }}
+            sx={{ width: 130, ml: 1, mt: -0 }}
             label="Telefone"
             name="telefone"
             autoComplete="telefone"
@@ -104,19 +119,20 @@ export const Formulario = () => {
             helperText={errorTelefone}
           />
           <TextField
-            value={email}
-            error={errorEmail}
+            value={cpf}
+            error={errorCpf}
             margin="normal"
             required
-            sx={{ width: 250 }}
-            label="Email"
-            name="email"
-            autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={() => setErrorEmail("")}
-            helperText={errorEmail}
+            sx={{ width: 328, mt: 0.5 }}
+            label="CPF"
+            name="cpf"
+            autoComplete="cpf"
+            onChange={(e) => setCpf(e.target.value)}
+            onKeyDown={() => setErrorCpf("")}
+            helperText={errorCpf}
           />
-          <Box width="250px" p="15px">
+
+          <Box width="145px" p="15px" sx={{ ml: 21.5 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Genero</InputLabel>
               <Select
@@ -131,7 +147,6 @@ export const Formulario = () => {
                 onKeyDown={() => setErrorGenero("")}
                 helperText={errorGenero}
               >
-                <MenuItem value=" "></MenuItem>
                 <MenuItem value="M">Masculino</MenuItem>
                 <MenuItem value="F">Feminino</MenuItem>
                 <MenuItem value="O">Outros</MenuItem>
@@ -146,7 +161,7 @@ export const Formulario = () => {
               label="Ano de Nascimento"
               type="date"
               defaultValue="2017-05-24"
-              sx={{ width: 250, alignSelf: "center" }}
+              sx={{ width: 175, mt: -8.8, ml: 0.5 }}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -156,11 +171,24 @@ export const Formulario = () => {
             />
           </Stack>
           <TextField
+            value={email}
+            error={errorEmail}
+            margin="normal"
+            required
+            sx={{ width: 330, mt: -0 }}
+            label="Email"
+            name="email"
+            autoComplete="email"
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={() => setErrorEmail("")}
+            helperText={errorEmail}
+          />
+          <TextField
             value={endereco}
             error={errorEndereco}
             margin="normal"
             required
-            sx={{ width: 250 }}
+            sx={{ width: 192, ml: -10.5, mt: 0.5 }}
             label="Endereço"
             name="endereco"
             autoComplete="endereco"
@@ -168,12 +196,26 @@ export const Formulario = () => {
             onKeyDown={() => setErrorEndereco("")}
             helperText={errorEndereco}
           />
+          <TextField
+            value={cidade}
+            error={errorCidade}
+            margin="normal"
+            required
+            sx={{ width: 130, mr: -10.4, mt: 0.5, ml: 1 }}
+            label="Cidade "
+            name="cidade"
+            autoComplete="cidade"
+            onChange={(e) => setCidade(e.target.value)}
+            onKeyDown={() => setErrorCidade("")}
+            helperText={errorCidade}
+          />
+
           <Button
             onClick={onSubmit}
             variant="contained"
             disableElevation
-            padding="5px"
-            sx={{ backgroundColor: "rgb(243, 192, 32)", width: 220 }}
+            padding="10px"
+            sx={{ backgroundColor: "rgb(243, 192, 32)", width: 250 }}
           >
             Finalizar Cadastro
           </Button>
