@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
+import { ToasterContainer, toast, Toaster } from "react-hot-toast";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome é obrigatorio."),
@@ -18,7 +19,7 @@ const schema = yup.object().shape({
     .required("O email é obrigatório."),
   genero: yup.string().required(),
   endereco: yup.string().required(),
-  cpf: yup.number().required(),
+  cpf: yup.number(15).required("precisa de 15"),
   data: yup.string().required(),
   cidade: yup.string().required(),
 });
@@ -68,6 +69,7 @@ export const Formulario = () => {
             setErrorGenero(error.message);
           } else if (error.path === "data") {
             error.message = "Este campo é obrigatório";
+            toast.error(error.message);
             setErrorData(error.message);
           } else if (error.path === "endereco") {
             error.message = "Este campo é obrigatório";
@@ -85,6 +87,7 @@ export const Formulario = () => {
 
   return (
     <Container componetn="main" maxWidth="xs">
+      <Toaster position="top-center" />
       <form>
         <Box
           component="form"
@@ -215,11 +218,11 @@ export const Formulario = () => {
           />
 
           <Button
-            onClick={onSubmit}
             variant="contained"
             disableElevation
             padding="10px"
             sx={{ backgroundColor: "rgb(243, 192, 32)", width: 250 }}
+            onClick={onSubmit}
           >
             Finalizar Cadastro
           </Button>
