@@ -8,7 +8,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
-import { ToasterContainer, toast, Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome é obrigatorio."),
