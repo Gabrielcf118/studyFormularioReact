@@ -50,35 +50,43 @@ export const Formulario = () => {
       )
       .then((dadosValidados) => {
         console.log(dadosValidados);
+        toast.success("Cadastro feito com sucesso!✅");
       })
 
       .catch((errors) => {
         console.log(errors);
         errors.inner.forEach((error) => {
           if (error.path === "nome") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O nome é obrigatorio";
+            toast.error(error.message);
             setErrorNome(error.message);
           } else if (error.path === "telefone") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O telefone é obrigatório";
+            toast.error(error.message);
             setErrorTelefone(error.message);
           } else if (error.path === "email") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O email é obrigatório";
+            toast.error(error.message);
             setErrorEmail(error.message);
           } else if (error.path === "genero") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O genero é obrigatorio";
+            toast.error(error.message);
             setErrorGenero(error.message);
           } else if (error.path === "data") {
-            error.message = "Este campo é obrigatório";
+            error.message = "A data é obrigatória";
             toast.error(error.message);
             setErrorData(error.message);
           } else if (error.path === "endereco") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O endereco é obrigatório";
+            toast.error(error.message);
             setErrorEndereco(error.message);
           } else if (error.path === "cpf") {
-            error.message = "Este campo é obrigatório";
+            error.message = "O CPF é obrigatório";
+            toast.error(error.message);
             setErrorCpf(error.message);
           } else if (error.path === "cidade") {
-            error.message = "Este campo é obrigatório";
+            error.message = "A cidade é obrigatória";
+            toast.error(error.message);
             setErrorCidade(error.message);
           }
         });
