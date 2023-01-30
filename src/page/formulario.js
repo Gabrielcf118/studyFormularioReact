@@ -50,7 +50,7 @@ export const Formulario = () => {
       )
       .then((dadosValidados) => {
         console.log(dadosValidados);
-        toast.success("Cadastro feito com sucesso!✅");
+        toast.success("Cadastro feito com sucesso!");
       })
 
       .catch((errors) => {
@@ -77,7 +77,7 @@ export const Formulario = () => {
             toast.error(error.message);
             setErrorData(error.message);
           } else if (error.path === "endereco") {
-            error.message = "O endereco é obrigatório";
+            error.message = "O endereço é obrigatório";
             toast.error(error.message);
             setErrorEndereco(error.message);
           } else if (error.path === "cpf") {
