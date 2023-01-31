@@ -111,7 +111,7 @@ export const Formulario = () => {
             value={nome}
             error={errorNome}
             required
-            sx={{ width: 190, ml: -0 }}
+            sx={{ width: 190, ml: 0 }}
             id="name"
             label="Nome Completo"
             autoComplete="name"
